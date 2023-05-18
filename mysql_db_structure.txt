@@ -9,6 +9,9 @@ USE db_sky;
 CREATE TABLE Auth (
 auth_id INT NOT NULL AUTO_INCREMENT,
 session_id varchar(255),
+avatar TEXT,
+username varchar(255),
+color varchar(255),
 user_id int,
 verify_key int,
 verified BOOLEAN DEFAULT false,
