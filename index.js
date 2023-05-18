@@ -2,7 +2,7 @@
 
 const rateLimit = require('express-rate-limit')
 const express = require("express")
-const port = 2000;
+const port = 2002;
 const app = express();
 var cors = require("cors")
 app.use(cors())
