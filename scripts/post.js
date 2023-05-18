@@ -6,16 +6,12 @@ module.exports = (req, res) => {
     console.log("post "+post_id+" request")
 
     db.query(
-        `SELECT Reaction.*, Reaction.user_id, Auth.user_id, Auth.username, Auth.avatar, Auth.color
-        FROM Reaction WHERE post_id = ${post_id}
-        LEFT JOIN Auth ON Reaction.user_id = Auth.user_id
-        GROUP BY Reaction.user_id
-        ORDER BY timestamp DESC`
+        `SELECT * FROM Reaction WHERE post_id = ${post_id}`
 
         , function (error, results, fields) {
             if (error) {
 
-                console.error('insert reaction error ' + error.message);
+                console.error('error ' + error.message);
 
                 res.status(200).json({
                     success: false,
