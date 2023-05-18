@@ -1,0 +1,40 @@
+module.exports = {
+    isVerify: function (session_id, user_id, res, callback) {
+
+        var db = require('./db');
+
+        console.log("checking if user_id with session_id is verified")
+
+        // check if user isVerify. session must be verified for this
+        db.query(
+            `SELECT COUNT(*) AS RowCount FROM Auth WHERE user_id = ${user_id} AND session_id = ${session_id} AND verified = 1 LIMIT 1`
+            , function (error, results, fields) {
+
+                if (error) {
+                    console.log(error);
+
+                    res.status(200).json({ 
+                        success: false,
+                        error: true,
+                        message: "error\n\n"+error })
+                } else {
+
+                    if (Number(results[0].RowCount) == 0) {
+
+                        console.log("authentication invalid");
+
+                        res.status(200).json({
+                            success: false,
+                            error: false,
+                            message: "authentication invalid. user id does not exist"
+                        })
+
+                        return callback(false);
+                    } else {
+                        return callback(true);
+                    }
+
+                }
+        });
+    }
+};

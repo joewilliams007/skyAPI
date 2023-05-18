@@ -1,4 +1,5 @@
-//  Main file of Starspace Server
+// Main file of the sky API
+// installation files: install.sh, msysql_db_structure.txt, db.js
 
 const rateLimit = require('express-rate-limit')
 const express = require("express")
@@ -21,8 +22,14 @@ app.use(express.json())
 
 
 // GET REQUEST
+
+// Verifying proccess
 app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id
 app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key
+
+
+// React to post
+app.get("/react/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
