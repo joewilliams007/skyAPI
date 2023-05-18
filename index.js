@@ -21,7 +21,8 @@ app.use(express.json())
 
 
 // GET REQUEST
-app.get("/verify/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id
+app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id
+app.get("/verify_comment/:user_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
