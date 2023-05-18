@@ -29,7 +29,7 @@ app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_commen
 
 
 // React to post
-app.get("/react/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post
+app.get("/react_post/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
