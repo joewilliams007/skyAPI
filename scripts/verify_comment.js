@@ -1,7 +1,8 @@
 module.exports = (req, res) => {
+    var { session_id } = req.params;
     var { user_id } = req.params;
 
-    console.log("verify key of user: "+user_id)
+    console.log("verify key on post session "+session_id+" user: "+user_id)
 
     var getJSON = require('get-json')
  

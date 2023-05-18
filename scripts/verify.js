@@ -2,7 +2,7 @@ module.exports = (req, res) => {
     var { session_id } = req.params;
     var { user_id } = req.params;
 
-    console.log(session_id+" user: "+user_id)
+    console.log("generating key for session "+session_id+" user: "+user_id)
 
     res.status(200).json({ 
         success: true,
