@@ -3,8 +3,6 @@
 const rateLimit = require('express-rate-limit')
 const express = require("express")
 const port = 2000;
-var multer = require("multer");
-var upload = multer({ dest: "./uploads/" });
 const app = express();
 var cors = require("cors")
 app.use(cors())
