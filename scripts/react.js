@@ -15,9 +15,57 @@ module.exports = (req, res) => {
     authenticate.isVerify(session_id, user_id, res, function(isAuthenticate){
         // returns true or false
         if(isAuthenticate) {
-            setReaction();
+            checkCount();
         }
     })
+
+    // check if reaction of user already exist. if, then delete existing reaction
+    function checkCount(); {
+        db.query(
+            `SELECT COUNT(*) AS RowCount FROM Reaction WHERE user_id = ${user_id} AND reaction = ${reaction} AND post_id = ${post_id}`
+            , function (error, results, fields) {
+
+                if (error) {
+                    console.log(error);
+
+                    res.status(200).json({ 
+                        success: false,
+                        error: true,
+                        message: "error\n\n"+error })
+                } else {
+                    if (Number(results[0].RowCount) == 0) {
+                        setReaction();
+                    } else {
+                        deleteReaction();
+                    }
+
+                }
+        });
+    }
+
+    function deleteReaction() {
+        db.query(
+            `DELETE FROM Reaction
+            WHERE user_id = ${user_id} AND reaction = ${reaction} AND post_id = ${post_id}`
+            , function (error, results, fields) {
+                if (error) {
+                    console.log('database error ' + error.message);
+
+                    res.status(200).json({
+                        success: false,
+                        error: true,
+                        message: error.message
+                    })
+    
+                } else {
+                    res.status(200).json({
+                        success: true,
+                        error: false,
+                        message: "reaction has been deleted"
+                    })
+                }
+        })
+    }
 
     function setReaction() {
         db.query(
