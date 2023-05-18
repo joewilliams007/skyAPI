@@ -18,7 +18,7 @@ module.exports = (req, res) => {
 
             db.query(
                 `INSERT INTO Auth (session_id, user_id, verify_key, username, avatar, color) 
-                VALUES ("${session_id}",${user_id},${timestamp},"${response.profile.username}","${response.profile.user_avatar.i}","${response.profile.user_avatar.b}")`
+                VALUES ("${session_id}",${user_id},${timestamp},"${response.profile.username}","${response.profile.avatar_sm.i}","${response.profile.avatar_sm.b}")`
                 , function (error, results, fields) {
                     if (error) {
         
