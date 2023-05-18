@@ -22,7 +22,7 @@ CREATE TABLE Reaction (
 reaction_id INT NOT NULL AUTO_INCREMENT,
 user_id int,
 post_id int,
-emojie varchar(255),
+emoji varchar(255),
 timestamp int,
 PRIMARY KEY ( reaction_id )
 );
