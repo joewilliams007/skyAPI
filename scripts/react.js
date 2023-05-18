@@ -20,7 +20,7 @@ module.exports = (req, res) => {
     })
 
     // check if reaction of user already exist. if, then delete existing reaction
-    function checkCount(); {
+    function checkCount() {
         db.query(
             `SELECT COUNT(*) AS RowCount FROM Reaction WHERE user_id = ${user_id} AND reaction = ${reaction} AND post_id = ${post_id}`
             , function (error, results, fields) {
