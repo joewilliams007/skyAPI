@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     db.query(
         `SELECT Reaction.*, Reaction.user_id, Auth.user_id, Auth.username, Auth.avatar, Auth.color
         FROM Reaction WHERE post_id = ${post_id}
-        LEFT JOIN Auth ON Reaction.user_id = Vote.user_id
+        LEFT JOIN Auth ON Reaction.user_id = Auth.user_id
         GROUP BY Reaction.user_id
         ORDER BY timestamp DESC`
 
