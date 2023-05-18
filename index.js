@@ -28,8 +28,11 @@ app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // V
 app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key
 
 
-// React to post
+// Reaction
 app.get("/react_post/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post
+
+// Get post extras
+app.get("/post/:post_id", require("./scripts/post.js")) // get post
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
