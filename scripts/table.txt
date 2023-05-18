@@ -1,0 +1,13 @@
+DROP DATABASE db_sky;
+CREATE DATABASE db_sky;
+ALTER DATABASE db_sky CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+USE db_sky;
+
+CREATE TABLE Auth (
+auth_id INT NOT NULL AUTO_INCREMENT,
+session_id varchar(255),
+user_id int;
+verify_key int,
+verified BOOLEAN DEFAULT false,
+PRIMARY KEY ( auth_id )
+);
