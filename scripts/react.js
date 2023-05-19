@@ -37,7 +37,7 @@ module.exports = (req, res) => {
                         setReaction();
                     } else {
                         deleteReaction();
-                        setReaction();
+                    
                     }
 
                 }
@@ -59,11 +59,7 @@ module.exports = (req, res) => {
                     })
     
                 } else {
-                    res.status(200).json({
-                        success: true,
-                        error: false,
-                        message: "reaction has been deleted"
-                    })
+                    setReaction();
                 }
         })
     }
