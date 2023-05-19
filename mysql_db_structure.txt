@@ -20,7 +20,7 @@ user_id INT NOT NULL AUTO_INCREMENT,
 avatar TEXT,
 username varchar(255),
 color varchar(255),
-used_score int DEFAULT 0;
+used_score int DEFAULT 0,
 blocked TEXT,
 following TEXT,
 background varchar(2000),

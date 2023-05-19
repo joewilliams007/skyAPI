@@ -53,7 +53,7 @@ module.exports = (req, res) => {
 
             db.query(
                 `INSERT INTO Users (user_id, username, avatar, color, timestamp) 
-                VALUES (${user_id},"${response.profile.username}","${response.profile.avatar_sm.i}","${response.profile.avatar_sm.b},${timestamp}")`
+                VALUES (${user_id},"${response.profile.username}","${response.profile.avatar_sm.i}","${response.profile.avatar_sm.b}",${timestamp})`
                 , function (error, results, fields) {
                     if (error) {
                     
