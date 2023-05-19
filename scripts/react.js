@@ -37,6 +37,7 @@ module.exports = (req, res) => {
                         setReaction();
                     } else {
                         deleteReaction();
+                        setReaction();
                     }
 
                 }
