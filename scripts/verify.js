@@ -29,14 +29,7 @@ module.exports = (req, res) => {
 
                 if (Number(results[0].RowCount) == 0) {
 
-                    console.log("authentication invalid");
-
-                    res.status(200).json({
-                        success: false,
-                        error: false,
-                        message: "authentication invalid. user id does not exist"
-                    })
-
+                    console.log("user first sign in attempt - creating account");
                     createUser();
                 } else {
                     createSession();
@@ -96,6 +89,7 @@ module.exports = (req, res) => {
                 })
 
             } else {
+                console.log ("creating session")
                 res.status(200).json({
                     success: true,
                     error: false,
