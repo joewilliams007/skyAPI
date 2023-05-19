@@ -6,8 +6,12 @@ module.exports = (req, res) => {
     console.log("post "+post_id+" request")
 
     db.query(
-        `SELECT * FROM Reaction WHERE post_id = ${post_id}`
-
+        `SELECT Reaction.*, Users.avatar, Users.username, Users.color
+        FROM Reaction
+        INNER JOIN Users ON Reaction.user_id=Users.user_id
+        WHERE post_id = ${post_id}
+        ORDER BY timestamp ASC`
+    
         , function (error, results, fields) {
             if (error) {
 
