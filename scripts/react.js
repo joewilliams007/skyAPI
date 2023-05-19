@@ -22,7 +22,7 @@ module.exports = (req, res) => {
     // check if reaction of user already exist. if, then delete existing reaction
     function checkCount() {
         db.query(
-            `SELECT COUNT(*) AS RowCount FROM Reaction WHERE user_id = ${user_id} AND reaction = "${reaction}" AND post_id = ${post_id}`
+            `SELECT COUNT(*) AS RowCount FROM Reaction WHERE user_id = ${user_id} AND post_id = ${post_id}`
             , function (error, results, fields) {
 
                 if (error) {
@@ -46,7 +46,7 @@ module.exports = (req, res) => {
     function deleteReaction() {
         db.query(
             `DELETE FROM Reaction
-            WHERE user_id = ${user_id} AND reaction = "${reaction}" AND post_id = ${post_id}`
+            WHERE user_id = ${user_id} AND post_id = ${post_id}`
             , function (error, results, fields) {
                 if (error) {
                     console.log('database error ' + error.message);
