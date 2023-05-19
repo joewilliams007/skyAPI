@@ -9,20 +9,39 @@ USE db_sky;
 CREATE TABLE Auth (
 auth_id INT NOT NULL AUTO_INCREMENT,
 session_id varchar(255),
-avatar TEXT,
-username varchar(255),
-color varchar(255),
 user_id int,
 verify_key int,
 verified BOOLEAN DEFAULT false,
 PRIMARY KEY ( auth_id )
 );
 
+CREATE TABLE Users (
+user_id INT NOT NULL AUTO_INCREMENT,
+avatar TEXT,
+username varchar(255),
+color varchar(255),
+used_score int DEFAULT 0;
+blocked TEXT,
+following TEXT,
+background varchar(2000),
+timestamp int,
+PRIMARY KEY ( user_id )
+);
+
 CREATE TABLE Reaction (
 reaction_id INT NOT NULL AUTO_INCREMENT,
 user_id int,
 post_id int,
-emoji varchar(255),
+reaction varchar(255),
 timestamp int,
 PRIMARY KEY ( reaction_id )
+);
+
+CREATE TABLE Messages (
+message_id INT NOT NULL AUTO_INCREMENT,
+user_id int,
+body TEXT,
+image varchar(2000),
+timestamp int,
+PRIMARY KEY ( message_id )
 );
