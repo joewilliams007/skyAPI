@@ -19,10 +19,7 @@ const limiter = rateLimit({
 app.use(limiter)
 
 app.listen(port, () => console.log("Server startet at port ", port));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
+app.use(express.json())
 
 // GET REQUEST
 
