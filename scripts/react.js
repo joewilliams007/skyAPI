@@ -6,7 +6,6 @@ module.exports = (req, res) => {
 
     var db = require('./db');
     var authenticate = require('./authenticate');
-    var ifEmoji = require('if-emoji');
     var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
 
     console.log("new reaction from session "+session_id+" user: "+user_id)
@@ -66,7 +65,9 @@ module.exports = (req, res) => {
     }
 
     function setReaction() {
-        if(ifEmoji(reaction)) {
+        var emojiRegex = /\p{Emoji}/u;
+   
+        if(emojiRegex.test(reaction)) {
             db.query(
                 `INSERT INTO Reaction (user_id, post_id, reaction, timestamp) 
                 VALUES (${user_id},${post_id},"${reaction}",${timestamp})`
