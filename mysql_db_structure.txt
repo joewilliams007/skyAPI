@@ -6,15 +6,6 @@ CREATE DATABASE db_sky;
 ALTER DATABASE db_sky CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 USE db_sky;
 
-CREATE TABLE Auth (
-auth_id INT NOT NULL AUTO_INCREMENT,
-session_id varchar(255),
-user_id int,
-verify_key int,
-verified BOOLEAN DEFAULT false,
-PRIMARY KEY ( auth_id )
-);
-
 CREATE TABLE Users (
 user_id INT NOT NULL AUTO_INCREMENT,
 avatar TEXT,
@@ -28,14 +19,29 @@ timestamp int,
 PRIMARY KEY ( user_id )
 );
 
+CREATE TABLE Auth (
+auth_id INT NOT NULL AUTO_INCREMENT,
+session_id varchar(255),
+user_id int,
+verify_key int,
+verified BOOLEAN DEFAULT false,
+PRIMARY KEY ( auth_id ),
+FOREIGN KEY ( user_id )
+    REFERENCES Users ( user_id )
+    ON DELETE CASCADE
+) ENGINE = INNODB; 
+
 CREATE TABLE Reaction (
 reaction_id INT NOT NULL AUTO_INCREMENT,
 user_id int,
 post_id int,
 reaction varchar(255),
 timestamp int,
-PRIMARY KEY ( reaction_id )
-);
+PRIMARY KEY ( reaction_id ),
+FOREIGN KEY ( user_id )
+    REFERENCES Users ( user_id )
+    ON DELETE CASCADE
+) ENGINE = INNODB; 
 
 CREATE TABLE Messages (
 message_id INT NOT NULL AUTO_INCREMENT,
@@ -43,5 +49,8 @@ user_id int,
 body TEXT,
 image varchar(2000),
 timestamp int,
-PRIMARY KEY ( message_id )
-);
+PRIMARY KEY ( message_id ),
+FOREIGN KEY ( user_id )
+    REFERENCES Users ( user_id )
+    ON DELETE CASCADE
+) ENGINE = INNODB; 

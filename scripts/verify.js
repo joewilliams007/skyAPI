@@ -39,11 +39,12 @@ module.exports = (req, res) => {
     });
 
     function createUser() {
+        console.log("creating user - fetching devRant details")
         // fetch profile details such as username, avatar, color
         getJSON('https://devrant.com/api/users/'+user_id+'?app=3/')
         .then(function (response) {
             var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
-
+    
             db.query(
                 `INSERT INTO Users (user_id, username, avatar, color, timestamp) 
                 VALUES (${user_id},"${response.profile.username}","${response.profile.avatar_sm.i}","${response.profile.avatar_sm.b}",${timestamp})`
@@ -64,7 +65,7 @@ module.exports = (req, res) => {
             });
 
         }).catch(function (error) {
-            console.log(error);
+            console.log("fetching devRant error\n\n"+error);
 
             res.status(200).json({ 
                 success: false,
