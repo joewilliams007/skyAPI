@@ -43,6 +43,9 @@ app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) 
 // Backup data
 app.post("/backup", upload.array("file"), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
 
+// Delete account
+app.post("/delete_account", upload.array("file"), require("./scripts/delete_account.js")); // Delete account (everything associated with foregin key user id will be deleted aswell)
+
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
 });
