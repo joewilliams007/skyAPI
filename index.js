@@ -41,7 +41,7 @@ app.get("/profile/:user_id", require("./scripts/profile.js")) // without authent
 app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) // with authentication profile details (such as following and blocking)
 
 // Backup data
-app.post("/backup",express.json(), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
+app.post("/backup", require("./scripts/backup.js")); // Backup following, blocked users and blocked words
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
