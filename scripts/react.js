@@ -6,6 +6,7 @@ module.exports = (req, res) => {
 
     var db = require('./db');
     var authenticate = require('./authenticate');
+    var ifEmoji = require('if-emoji');
     var timestamp = Math.floor(new Date().getTime() / 1000) // in seconds
 
     console.log("new reaction from session "+session_id+" user: "+user_id)
@@ -65,27 +66,36 @@ module.exports = (req, res) => {
     }
 
     function setReaction() {
-        db.query(
-            `INSERT INTO Reaction (user_id, post_id, reaction, timestamp) 
-            VALUES (${user_id},${post_id},"${reaction}",${timestamp})`
-            , function (error, results, fields) {
-                if (error) {
-    
-                    console.error('insert reaction error ' + error.message);
-    
-                    res.status(200).json({
-                        success: false,
-                        error: true,
-                        message: error.message
-                    })
-    
-                } else {
-                    res.status(200).json({
-                        success: true,
-                        error: false,
-                        message: "reaction has been set"
-                    })
-                }
-        });
+        if(ifEmoji(reaction)) {
+            db.query(
+                `INSERT INTO Reaction (user_id, post_id, reaction, timestamp) 
+                VALUES (${user_id},${post_id},"${reaction}",${timestamp})`
+                , function (error, results, fields) {
+                    if (error) {
+        
+                        console.error('insert reaction error ' + error.message);
+        
+                        res.status(200).json({
+                            success: false,
+                            error: true,
+                            message: error.message
+                        })
+        
+                    } else {
+                        res.status(200).json({
+                            success: true,
+                            error: false,
+                            message: "reaction has been set"
+                        })
+                    }
+            });
+        } else {
+            res.status(200).json({
+                success: false,
+                error: true,
+                message: "not a valid emoji"
+            })
+        }
+      
     }
 }
