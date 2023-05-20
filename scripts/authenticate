@@ -23,7 +23,7 @@ module.exports = {
 
                         console.log("authentication invalid");
 
-                        res.status(200).json({
+                        res.status(400).json({
                             success: false,
                             error: false,
                             message: "authentication invalid. user id does not exist"
