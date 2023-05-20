@@ -3,6 +3,7 @@
 
 const rateLimit = require('express-rate-limit')
 const express = require("express")
+var bodyParser = require('body-parser');
 const port = 2002;
 const app = express();
 var cors = require("cors")
