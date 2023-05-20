@@ -27,12 +27,15 @@ app.use(express.json())
 app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id (generated key) [client should comment key under verify post and then call verify_comment request]
 app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key (will verify session id)[after client commented key under verify_post]
 
-
 // Reaction
 app.get("/react_post/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post (Emojis only) [will delete prior set recation]
 
 // Get post extras
 app.get("/post/:post_id", require("./scripts/post.js")) // get post (Contains reactions)
+
+// Get profile extras
+app.get("/profile/:user_id", require("./scripts/profile.js")) // without authentication
+app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) // with authentication profile details (such as following and blocking)
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
