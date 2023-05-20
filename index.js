@@ -17,9 +17,9 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter)
-
-app.listen(port, () => console.log("Server startet at port ", port));
 app.use(express.json())
+app.listen(port, () => console.log("Server startet at port ", port));
+
 
 // GET REQUEST
 
