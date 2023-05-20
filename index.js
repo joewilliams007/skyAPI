@@ -24,15 +24,15 @@ app.use(express.json())
 // GET REQUEST
 
 // Verifying proccess
-app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id
-app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key
+app.get("/verify_key/:user_id/:session_id", require("./scripts/verify.js")) // Verify user id (generated key) [client should comment key under verify post and then call verify_comment request]
+app.get("/verify_comment/:user_id/:session_id", require("./scripts/verify_comment.js")) // Verify comment containing verify_key (will verify session id)[after client commented key under verify_post]
 
 
 // Reaction
-app.get("/react_post/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post
+app.get("/react_post/:user_id/:session_id/:post_id/:reaction", require("./scripts/react.js")) // react to post (Emojis only) [will delete prior set recation]
 
 // Get post extras
-app.get("/post/:post_id", require("./scripts/post.js")) // get post
+app.get("/post/:post_id", require("./scripts/post.js")) // get post (Contains reactions)
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
