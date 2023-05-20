@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 const port = 2002;
 const app = express();
 var cors = require("cors")
+var multer = require("multer");
+var upload = multer({ dest: "./uploads/" });
 app.use(cors())
 const limiter = rateLimit({
 	windowMs: 20 * 60 * 1000, // 20 minutes
@@ -17,8 +19,6 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter)
-
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.listen(port, () => console.log("Server startet at port ", port));
@@ -41,7 +41,7 @@ app.get("/profile/:user_id", require("./scripts/profile.js")) // without authent
 app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) // with authentication profile details (such as following and blocking)
 
 // Backup data
-app.post("/backup", require("./scripts/backup.js")); // Backup following, blocked users and blocked words
+app.post("/backup", upload.array("file"), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
 
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
