@@ -90,6 +90,7 @@ module.exports = (req, res) => {
                     }
             });
         } else {
+            console.log("not an emoji")
             res.status(200).json({
                 success: false,
                 error: true,
