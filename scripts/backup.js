@@ -6,6 +6,7 @@ module.exports = (req, res) => {
     blocked_words = req.body.blocked_words;
     blocked_users = req.body.blocked_users;
 
+    console.log(req.body)
     var db = require('./db');
     var authenticate = require('./authenticate');
 
