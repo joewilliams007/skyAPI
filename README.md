@@ -29,7 +29,7 @@ the skyAPI is a service that can be used to use features not included in the org
 {
   "success": true,
   "error": false,
-  "message: "session id has now been verified"
+  "message": "session id has now been verified"
 }
 ```
 - for any user_id related interactions with skyAPI, a verified session can now be used
@@ -67,9 +67,11 @@ the skyAPI is a service that can be used to use features not included in the org
 }
 ```
 ### deleting account
+- will delete everything associated with user_id as foreign key from Users table, such as sessions, reactions etc
 > POST BASE_URL/delete_account
-> param: user_id
-> param: session_id
+- param type: multipart/form-data
+- param: user_id
+- param: session_id
 ```json
 {
     "success": true,
@@ -77,3 +79,10 @@ the skyAPI is a service that can be used to use features not included in the org
     "message": "delete success"
 }
 ```
+### other endpoints
+- user profile
+> GET BASE_URL/profile/:user_id
+- my profile
+> GET BASE_URL/my_profile/:user_id/:session_id
+- backup data (example skyRANT)
+> POST backup
