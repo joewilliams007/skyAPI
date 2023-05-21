@@ -85,6 +85,7 @@ the skyAPI is a service that can be used to use features not included in the org
 ```
 ### other endpoints
 - user profile
+[example profile](http://stardash.de:2002/profile/5344593)
 > GET BASE_URL/profile/:user_id
 - my profile
 > GET BASE_URL/my_profile/:user_id/:session_id
