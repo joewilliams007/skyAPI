@@ -6,8 +6,8 @@ the skyAPI is a service that can be used to use features not included in the org
 - [x] react to posts with emojis
 
 ## connecting to the API
-note: all endpoints can be viewed in the index.js file
-BASE_URL: http://stardash.de:2002/
+- note: all endpoints can be viewed in the index.js file
+- BASE_URL: http://stardash.de:2002/
 
 ### verifying devRant account session
 to verify (tell sky server that you are the real owner of a devRant account) a session, first get a key from the server
