@@ -8,6 +8,7 @@ the skyAPI is a service that can be used to use features not included in the org
 - [x] backup data following/blockedUsers/blockedWords
 - [ ] chat
 - [ ] profile personalisation
+- [ ] [community projects API](https://github.com/joewilliams007/jsonapi) being merged
 - [ ] many more to come!
 ## connecting to the API
 - note: all endpoints can be viewed in the index.js file
