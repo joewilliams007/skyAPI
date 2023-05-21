@@ -85,4 +85,4 @@ the skyAPI is a service that can be used to use features not included in the org
 - my profile
 > GET BASE_URL/my_profile/:user_id/:session_id
 - backup data (example skyRANT)
-> POST backup
+> POST BASE_URL/backup
