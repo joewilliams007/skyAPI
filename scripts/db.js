@@ -19,5 +19,5 @@ var connection = mysql.createPool({
     dateStrings: true
 });
 
-connection.connect();
+// connection.connect();
 module.exports = connection;
