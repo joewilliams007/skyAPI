@@ -1,10 +1,14 @@
 # skyAPI
 ### about
 the skyAPI is a service that can be used to use features not included in the orgional devRant API. skyAPI is not intended as it's own social media, but rather as an optional add-on
-
+[example endpoint](http://stardash.de:2002/post/6608716)
 ## features
+- [x] get reactions to post
 - [x] react to posts with emojis
-
+- [x] backup data following/blockedUsers/blockedWords
+- [ ] chat
+- [ ] profile personalisation
+- [ ] many more to come!
 ## connecting to the API
 - note: all endpoints can be viewed in the index.js file
 - BASE_URL: http://stardash.de:2002/
@@ -86,3 +90,19 @@ the skyAPI is a service that can be used to use features not included in the org
 > GET BASE_URL/my_profile/:user_id/:session_id
 - backup data (example skyRANT)
 > POST BASE_URL/backup
+## custom server installation
+- incase one wants to host skyAPI him/herself
+### creating mysql database
+- creating database: mysql_db_structure.txt
+- editing file to connect to your database
+```bash
+nano scripts/db.js
+```
+### installing
+```bash
+git clone https://github.com/joewilliams007/skyAPI
+cd skyAPI
+sudo bash install.sh
+```
+## Example Implementation
+https://github.com/joewilliams007/skyRant
