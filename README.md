@@ -16,7 +16,7 @@ to verify (tell sky server that you are the real owner of a devRant account) a s
 {
   "success": true,
   "error": false,
-  "verify_key": timestamp,
+  "verify_key": 1684671895,
   "verify_post_id": "6608716",
   "message": "session id can be verified by commenting verify_key to the verify rant"
 }
