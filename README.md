@@ -107,5 +107,5 @@ cd skyAPI
 sudo bash install.sh
 ```
 ## Example Implementation
-[skyRant Android client](https://github.com/joewilliams007/skyRant)
-[watchRant wear-os client](https://github.com/joewilliams007/watchRant)
+- [skyRant Android client](https://github.com/joewilliams007/skyRant)
+- [watchRant wear-os client](https://github.com/joewilliams007/watchRant)
