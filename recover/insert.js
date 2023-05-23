@@ -7,6 +7,6 @@ fs.readFile('./community.json', 'utf8', function (err, data) {
   //console.log(obj.projects)
 
   obj.projects.forEach(element => 
-    console.log(element)
+    console.log(element.title)
   );
 });
