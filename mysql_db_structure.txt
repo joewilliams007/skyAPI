@@ -48,6 +48,32 @@ FOREIGN KEY ( user_id )
     ON DELETE CASCADE
 ) ENGINE = INNODB; 
 
+CREATE TABLE Projects (
+project_id INT NOT NULL AUTO_INCREMENT,
+user_id int,
+stars int DEFAULT 0,
+comments int DEFAULT 0,
+reactions int DEFAULT 0,
+title varchar(2000),
+os varchar(2000),
+type varchar(2000),
+timestamp_added int,
+timestamp_created int,
+description TEXT,
+relevant_dr_url varchar(2000),
+website varchar(2000),
+github varchar(2000),
+language varchar(2000),
+active BOOLEAN,
+archived BOOLEAN,
+owner_user_id int,
+owner varchar(2000),
+PRIMARY KEY ( project_id ),
+FOREIGN KEY ( user_id )
+    REFERENCES Users ( user_id )
+    ON DELETE SET NULL
+) ENGINE = INNODB;
+
 CREATE TABLE Messages (
 message_id INT NOT NULL AUTO_INCREMENT,
 user_id int,
