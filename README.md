@@ -1,6 +1,6 @@
 # skyAPI
 ### about
-the skyAPI is a service that can be used to use features not included in the orgional devRant API. skyAPI is not intended as it's own social media, but rather as an optional add-on
+the skyAPI is a service that can be used to use features not included in the official devRant API. skyAPI is not intended as it's own social media, but rather as an optional add-on
 [example endpoint](http://stardash.de:2002/post/6608716)
 ## features
 - [x] get reactions to post
@@ -107,4 +107,5 @@ cd skyAPI
 sudo bash install.sh
 ```
 ## Example Implementation
-https://github.com/joewilliams007/skyRant
+- [skyRant Android client](https://github.com/joewilliams007/skyRant)
+- [watchRant wear-os client](https://github.com/joewilliams007/watchRant)
