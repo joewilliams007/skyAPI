@@ -27,7 +27,7 @@ module.exports = (req, res) => {
             } else {
                 db.query(
                     `SELECT *
-                    FROM Reactions
+                    FROM Reaction
                     WHERE user_id = ${user_id}
                     LIMIT 50`
                 
