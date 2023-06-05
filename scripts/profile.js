@@ -2,12 +2,14 @@ module.exports = (req, res) => {
     var { user_id } = req.params;
 
     var db = require('./db');
-   
+    
+    var { user_id } = req.params;
+
     console.log("user profile "+user_id+" request")
 
     db.query(
         `SELECT
-        
+
         user_id,
         avatar,
         username,
