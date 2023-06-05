@@ -59,6 +59,7 @@ module.exports = (req, res) => {
                     })
     
                 } else {
+                    updateReaction(-1)
                     setReaction();
                 }
         })
@@ -88,6 +89,8 @@ module.exports = (req, res) => {
                             error: false,
                             message: "reaction has been set"
                         })
+
+                        updateReaction(1);
                     }
             });
         } else {
@@ -99,5 +102,21 @@ module.exports = (req, res) => {
             })
         }
       
+    }
+
+    function updateReaction(update) {
+        db.query(
+            `UPDATE Users SET reactions = reactions+${update}`
+            , function (error, results, fields) {
+                if (error) {
+    
+                    console.error('update reaction error ' + error.message);
+    
+                } else {
+
+                    console.error('reactions updated by ' + update);
+    
+                }
+        });
     }
 }
