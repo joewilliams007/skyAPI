@@ -26,9 +26,11 @@ module.exports = (req, res) => {
 
             } else {
                 db.query(
-                    `SELECT *
+                    `SELECT Reaction.*, Users.avatar, Users.username, Users.color
                     FROM Reaction
+                    INNER JOIN Users ON Reaction.user_id=Users.user_id
                     WHERE user_id = ${user_id}
+                    ORDER BY timestamp DESC
                     LIMIT 50`
                 
                     , function (error, react_results, fields) {
