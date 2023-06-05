@@ -6,7 +6,16 @@ module.exports = (req, res) => {
     console.log("user profile "+user_id+" request")
 
     db.query(
-        `SELECT *
+        `SELECT
+        
+        user_id,
+        avatar,
+        username,
+        color,
+        reactions,
+        background,
+        timestamp
+
         FROM Users
         WHERE user_id = ${user_id}
         LIMIT 1`
