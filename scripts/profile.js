@@ -29,7 +29,7 @@ module.exports = (req, res) => {
                     `SELECT Reaction.*, Users.avatar, Users.username, Users.color
                     FROM Reaction
                     INNER JOIN Users ON Reaction.user_id=Users.user_id
-                    WHERE user_id = ${user_id}
+                    WHERE Users.user_id = ${user_id}
                     ORDER BY timestamp DESC
                     LIMIT 50`
                 
