@@ -75,7 +75,7 @@ module.exports = (req, res) => {
                                     success: false,
                                     error: false,
                                     message: "user not registered to sky",
-                                    profile: []
+                                    profile: {}
                                 })
                             }
                            
