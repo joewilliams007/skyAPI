@@ -56,6 +56,9 @@ app.get("/post/:post_id", require("./scripts/post.js")) // get post (Contains re
 app.get("/profile/:user_id", require("./scripts/profile.js")) // without authentication
 app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) // with authentication profile details (such as following and blocking)
 
+// Get community projects
+app.get("/community", require("./scripts/community.js")) // get community projects (formaly https://github.com/joewilliams007/jsonapi (same structure, use GitHub as back up))
+
 // Backup data
 app.post("/backup", upload.array("file"), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
 
