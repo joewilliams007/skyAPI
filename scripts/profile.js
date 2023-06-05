@@ -2,7 +2,7 @@ module.exports = (req, res) => {
     var { user_id } = req.params;
 
     var db = require('./db');
-    
+
     var { user_id } = req.params;
 
     console.log("user profile "+user_id+" request")
@@ -38,13 +38,7 @@ module.exports = (req, res) => {
                     success: true,
                     error: false,
                     message: "ok",
-                    profile: {
-                        user_id: results[0].user_id,
-                        avatar: results[0].avatar,
-                        username: results[0].username,
-                        color: results[0].color,
-                        background: results[0].background
-                    }
+                    profile: results
                 })
             }
     });
