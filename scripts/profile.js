@@ -47,7 +47,7 @@ module.exports = (req, res) => {
                                     color: results[0].color,
                                     background: results[0].background,
                                     timestamp: results[0].timestamp,
-                                    num_reactions: results[0].reactions
+                                    reactions_count: results[0].reactions
                                 }
                             })
             
@@ -63,7 +63,7 @@ module.exports = (req, res) => {
                                     color: results[0].color,
                                     background: results[0].background,
                                     timestamp: results[0].timestamp,
-                                    num_reactions: results[0].reactions,
+                                    reactions_count: results[0].reactions,
                                     reactions: react_results
                                 }
                             })
