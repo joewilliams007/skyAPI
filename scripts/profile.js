@@ -54,21 +54,30 @@ module.exports = (req, res) => {
                             })
             
                         } else {
-                            res.status(200).json({
-                                success: true,
-                                error: false,
-                                message: "ok",
-                                profile: {
-                                    user_id: results[0].user_id,
-                                    avatar: results[0].avatar,
-                                    username: results[0].username,
-                                    color: results[0].color,
-                                    background: results[0].background,
-                                    timestamp: results[0].timestamp,
-                                    reactions_count: results[0].reactions,
-                                    reactions: react_results
-                                }
-                            })
+                            try  {
+                                res.status(200).json({
+                                    success: true,
+                                    error: false,
+                                    message: "ok",
+                                    profile: {
+                                        user_id: results[0].user_id,
+                                        avatar: results[0].avatar,
+                                        username: results[0].username,
+                                        color: results[0].color,
+                                        background: results[0].background,
+                                        timestamp: results[0].timestamp,
+                                        reactions_count: results[0].reactions,
+                                        reactions: react_results
+                                    }
+                                })
+                            } catch (err) {
+                                res.status(200).json({
+                                    success: false,
+                                    error: false,
+                                    message: "user not registered to sky",
+                                })
+                            }
+                           
                         }
                 });
             }
