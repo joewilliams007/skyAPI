@@ -1,7 +1,7 @@
 module.exports = (req, res) => {
     var db = require('./db');
    
-    console.log("community proejcts request")
+    console.log("community projects request")
 
     db.query(
         `SELECT * FROM Projects ORDER BY timestamp_added DESC`
