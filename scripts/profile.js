@@ -74,7 +74,7 @@ module.exports = (req, res) => {
                                 res.status(200).json({
                                     success: false,
                                     error: false,
-                                    message: "user not registered to sky",
+                                    message: "user not registered to sky"
                                 })
                             }
                            
