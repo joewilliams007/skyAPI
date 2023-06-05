@@ -4,7 +4,7 @@ module.exports = (req, res) => {
     console.log("community proejcts request")
 
     db.query(
-        `SELECT * FROM Projects ORDER BY timestamp_added DESC`
+        `SELECT * IF(0 = FALSE, 'true', 'false') FROM Projects ORDER BY timestamp_added DESC`
     
         , function (error, results, fields) {
             if (error) {
