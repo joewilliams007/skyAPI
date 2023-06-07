@@ -58,6 +58,8 @@ app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) 
 
 // Get community projects
 app.get("/community", require("./scripts/community.js")) // get community projects (formaly https://github.com/joewilliams007/jsonapi (same structure, use GitHub as back up))
+// Upload community project
+app.post("/upload_project", upload.array("file"), require("./scripts/upload_project.js")); // upload project
 
 // Backup data
 app.post("/backup", upload.array("file"), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
