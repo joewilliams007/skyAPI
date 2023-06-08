@@ -58,9 +58,9 @@ module.exports = (req, res) => {
         db.query(
             `INSERT INTO Projects 
             (user_id,title,os,type,timestamp_added,description,relevant_dr_url,website,github,
-            language,active,archived,owner_user_id,owner)
+            language,active,archived,owner,owner_user_id)
             VALUES (${user_id},"${title}","${os}","${type}",${timestamp_added},"${description}","${relevant_dr_url}","${website}",
-            "${github}","${language}",${active},${archived},${owner_user_id},'"${owner}"')`
+            "${github}","${language}",${active},${archived},"${owner}",${owner_user_id})`
             , function (error, results, fields) {
                 if (error) {
     
