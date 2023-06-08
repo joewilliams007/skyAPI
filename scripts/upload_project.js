@@ -60,7 +60,7 @@ module.exports = (req, res) => {
             (user_id,title,os,type,timestamp_added,description,relevant_dr_url,website,github,
             language,active,archived,owner_user_id,owner)
             VALUES (${user_id},"${title}","${os}","${type}",${timestamp_added},"${description}","${relevant_dr_url}","${website}",
-            "${github}","${language}",${active},${archived},${owner_user_id},"${owner}")`
+            "${github}","${language}",${active},${archived},${owner_user_id},'"${owner}"')`
             , function (error, results, fields) {
                 if (error) {
     
