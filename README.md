@@ -111,6 +111,7 @@ nano scripts/db.js
 git clone https://github.com/joewilliams007/skyAPI
 cd skyAPI
 sudo bash install.sh
+node index
 ```
 ## Example Implementation
 - [skyRant Android client](https://github.com/joewilliams007/skyRant)
