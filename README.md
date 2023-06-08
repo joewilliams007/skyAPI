@@ -6,12 +6,13 @@ the skyAPI is a service that can be used to use features not included in the off
 - [x] get reactions to post
 - [x] react to posts with emojis
 - [x] backup data following/blockedUsers/blockedWords
+- [x] [community projects API](https://github.com/joewilliams007/jsonapi) being merged (old endpoint as backup)
+- [x] upload community project
 - [ ] chat
 - [ ] profile personalisation
-- [ ] [community projects API](https://github.com/joewilliams007/jsonapi) being merged
 - [ ] many more to come!
 ## connecting to the API
-- note: all endpoints can be viewed in the index.js file
+- note: all endpoints can be viewed in the [index.js](https://github.com/joewilliams007/skyAPI/blob/main/index.js) file
 - BASE_URL: http://stardash.de:2002/
 
 ### verifying devRant account session
@@ -90,7 +91,12 @@ the skyAPI is a service that can be used to use features not included in the off
 > GET BASE_URL/profile/:user_id
 - my profile
 > GET BASE_URL/my_profile/:user_id/:session_id
-- backup data [(example implementation skyRant)](https://github.com/joewilliams007/skyRant)
+- community projects
+[view endpoint](http://stardash.de:2002/community)
+> GET BASE_URL/community
+- upload community project [(example implementation skyRant)](https://github.com/joewilliams007/skyRant/blob/69beede470a2a95e2a6218e78b986add27b66e87/app/src/main/java/com/dev/engineerrant/UploadProjectActivity.java#L253)
+> POST BASE_URL/upload_project
+- backup data [(example implementation skyRant)](https://github.com/joewilliams007/skyRant/blob/69beede470a2a95e2a6218e78b986add27b66e87/app/src/main/java/com/dev/engineerrant/BackupActivity.java#L166)
 > POST BASE_URL/backup
 ## custom server installation
 - incase one wants to host skyAPI him/herself
