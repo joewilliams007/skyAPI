@@ -15,6 +15,8 @@ module.exports = (req, res) => {
     owner_user_id = req.body.owner_user_id
     owner = req.body.owner
 
+    console.log(req.body)
+
     var db = require('./db');
     var authenticate = require('./authenticate');
     var getJSON = require('get-json')
