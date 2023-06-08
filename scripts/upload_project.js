@@ -55,6 +55,10 @@ module.exports = (req, res) => {
 
     function upload(){
 
+        if (owner_user_id  == "") {
+            owner_user_id = 0;
+        }
+
         db.query(
             `INSERT INTO Projects 
             (user_id,title,os,type,timestamp_added,description,relevant_dr_url,website,github,
