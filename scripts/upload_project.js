@@ -59,6 +59,31 @@ module.exports = (req, res) => {
             owner_user_id = 0;
         }
 
+        type = type.toLowerCase();
+        if (type=="api") {
+            type = "API"
+        }
+
+        os = os.toLowerCase();
+        if (os == "chrome" ||os == "linux" ||os == "windows" ||os == "chrome" ||os == "chrome" ||os == "unity") {
+            os = os.charAt(0).toUpperCase() + os.slice(1);
+        }
+        if (os == "macos") {
+            os = "macOS";
+        }
+        if (os == "ios") {
+            os = "iOS";
+        }
+        if (os == "sailfishos") {
+            os = "SailfishOS";
+        }
+        if (os == "pebbleos") {
+            os = "PebbleOS";
+        }
+        if (os == "chromeos") {
+            os = "ChromeOS";
+        }
+
         db.query(
             `INSERT INTO Projects 
             (user_id,title,os,type,timestamp_added,description,relevant_dr_url,website,github,
