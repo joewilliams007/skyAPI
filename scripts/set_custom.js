@@ -28,7 +28,7 @@ module.exports = (req, res) => {
             avatar_frame_url = "${avatar_frame_url}",
             avatar_bg_hex = "${avatar_bg_hex}",
             avatar_bg_url = "${avatar_bg_url}",
-            profile_bg_url = "${profile_bg_url}",
+            profile_bg_url = "${profile_bg_url}"
             WHERE user_id = ${user_id}`
             , function (error, results, fields) {
                 if (error) {
