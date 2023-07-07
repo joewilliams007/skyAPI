@@ -26,7 +26,7 @@ module.exports = (req, res) => {
 
             } else {
                 db.query(
-                    `SELECT Reaction.*, Users.avatar, Users.username, Users.color
+                    `SELECT Reaction.*, Users.avatar, Users.username, Users.color, Users.frame_url, Users.frame_hex_color
                     FROM Reaction
                     INNER JOIN Users ON Reaction.user_id=Users.user_id
                     WHERE Users.user_id = ${user_id}

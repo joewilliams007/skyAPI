@@ -64,6 +64,9 @@ app.post("/upload_project", upload.array("file"), require("./scripts/upload_proj
 // Backup data
 app.post("/backup", upload.array("file"), require("./scripts/backup.js")); // Backup following, blocked users and blocked words
 
+// Set profile frame
+app.post("/set_frame", upload.array("file"), require("./scripts/set_frame.js")); // set_frame
+
 // Delete account
 app.post("/delete_account", upload.array("file"), require("./scripts/delete_account.js")); // Delete account (everything associated with foregin key user id will be deleted aswell)
 

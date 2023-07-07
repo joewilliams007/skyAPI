@@ -25,6 +25,9 @@ timestamp int,
 PRIMARY KEY ( user_id )
 );
 
+ALTER TABLE Users ADD frame_url VARCHAR(2000);
+ALTER TABLE Users ADD frame_hex_color VARCHAR(255);
+
 CREATE TABLE Auth (
 auth_id INT NOT NULL AUTO_INCREMENT,
 session_id varchar(255),
