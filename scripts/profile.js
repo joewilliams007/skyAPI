@@ -50,7 +50,11 @@ module.exports = (req, res) => {
                                     color: results[0].color,
                                     background: results[0].background,
                                     timestamp: results[0].timestamp,
-                                    reactions_count: results[0].reactions
+                                    reactions_count: results[0].reactions,
+                                    avatar_frame_url: results[0].avatar_frame_url,
+                                    avatar_bg_hex: results[0].avatar_bg_hex,
+                                    avatar_bg_url: results[0].avatar_bg_url,
+                                    profile_bg_url: results[0].profile_bg_url
                                 }
                             })
             
