@@ -38,7 +38,9 @@ module.exports = (req, res) => {
                         if (error) {
             
                             console.error('error ' + error.message);
-            
+             if (results[0].profile_bg_url == '') {
+                 results[0].profile_bg_url = null
+             }
                             res.status(200).json({
                                 success: true,
                                 error: false,
@@ -60,6 +62,10 @@ module.exports = (req, res) => {
             
                         } else {
                             try  {
+if (results[0].profile_bg_url == '') {
+                 results[0].profile_bg_url = null
+}
+                                
                                 res.status(200).json({
                                     success: true,
                                     error: false,
