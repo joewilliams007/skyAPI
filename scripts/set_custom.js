@@ -2,8 +2,10 @@ module.exports = (req, res) => {
 
     session_id = req.body.session_id;
     user_id = req.body.user_id;
-    frame_url = req.body.frame_url;
-    frame_hex_color = req.body.frame_hex_color;
+    avatar_frame_url = req.body.avatar_frame_url;
+    avatar_bg_hex = req.body.avatar_bg_hex;
+    avatar_bg_url = req.body.avatar_bg_url;
+    profile_bg_url = req.body.profile_bg_url;
 
     console.log(req.body)
     var db = require('./db');
@@ -15,21 +17,23 @@ module.exports = (req, res) => {
     authenticate.isVerify(session_id, user_id, res, function(isAuthenticate){
         // returns true or false
         if(isAuthenticate) {
-            setFrame();
+            setCustom();
         }
     })
 
-    function setFrame(){
+    function setCustom(){
 
         db.query(
             `UPDATE Users set
-            frame_url = "${frame_url}",
-            frame_hex_color = "${frame_hex_color}",
+            avatar_frame_url = "${avatar_frame_url}",
+            avatar_bg_hex = "${avatar_bg_hex}",
+            avatar_bg_url = "${avatar_bg_url}",
+            profile_bg_url = "${profile_bg_url}",
             WHERE user_id = ${user_id}`
             , function (error, results, fields) {
                 if (error) {
 
-                    console.log('frame set error ' + error.message);
+                    console.log('setCustom error ' + error.message);
                     res.status(200).json({
                         success: false,
                         error: true,
@@ -37,12 +41,12 @@ module.exports = (req, res) => {
                     })
 
                 } else {
-                    console.log('frame set successfull');
+                    console.log('setCustom successfull');
 
                     res.status(200).json({
                         success: true,
                         error: false,
-                        message: "frame set success"
+                        message: "setCustom success"
                     })
                 }
 
