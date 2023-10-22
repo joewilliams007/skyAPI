@@ -40,7 +40,7 @@ function stash(rants) {
                 } else {
                     console.log(results[0].id);
 
-                    if (rants[rants.length()-1]<results[0].id) {
+                    if (rants[rants.length-1]<results[0].id) {
                         console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
                     } else {
                         rants.forEach(element => {
