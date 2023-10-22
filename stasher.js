@@ -69,7 +69,7 @@ function insertRant(last_inserted_id, rant) {
                 ${rant.num_comments},"${tags}",${rant.edited},
                 ${rant.rt},${rant.rc},${rant.user_id},
                 "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
-                "${rant.user_avatar.i}","false")`
+                "${rant.user_avatar.i}",0)`
                 , function (error, results, fields) {
                     if (error) {
                         console.log('insert rant error ' + error.message);
@@ -83,7 +83,7 @@ function insertRant(last_inserted_id, rant) {
                 ${rant.num_comments},"${tags}",${rant.edited},
                 ${rant.rt},${rant.rc},${rant.user_id},
                 "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
-                "${rant.user_avatar.i}","true")`
+                "${rant.user_avatar.i}",1)`
                 , function (error, results, fields) {
                     if (error) {
                         console.log('insert rant error ' + error.message);
