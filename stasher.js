@@ -14,7 +14,7 @@ function fetchRants() {
     getJSON('https://devrant.com/api/devrant/rants?app=3&limit=50&sort=latest&range=day&skip=0/')
     .then(function (response) {
 
-        stash(response);
+        stash(response.rants);
 
     }).catch(function (error) {
         console.log("fetching devRant error\n\n"+error);
