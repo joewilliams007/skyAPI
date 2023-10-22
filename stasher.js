@@ -57,7 +57,7 @@ function stash(rants) {
 function insertRant(last_inserted_id, rant) {
     if (rant.id > last_inserted_id) {
 
-        var tags;
+        var tags = "";
         rant.tags.forEach(tag => {
             if (tag!=undefined) {
                 tags+=tag;
