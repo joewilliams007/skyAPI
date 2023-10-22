@@ -65,6 +65,13 @@ function insertRant(last_inserted_id, rant) {
         if (rant.url!=undefined) {
             isImage = true;
         }
+
+        if (rant.url==undefined) {
+            rant.url = "";
+            rant.width = 0;
+            rant.height = 0;
+        }
+
       
          db.query(
             `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
