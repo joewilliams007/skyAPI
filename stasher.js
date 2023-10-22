@@ -61,30 +61,37 @@ function insertRant(last_inserted_id, rant) {
         rant.tags.forEach(tag => {
             tags+=tag;
         });
-        var isImage = false;
-        if (rant.attached_image!=undefined) {
-            isImage = true;
-        }
 
         if (rant.attached_image==undefined) {
-            rant.attached_image.url = "";
-            rant.attached_image.width = 0;
-            rant.attached_image.height = 0;
+            db.query(
+                `INSERT INTO Rants (id,text,score,created_time,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
+                VALUES (${rant.id},"${rant.text}",${rant.score},${rant.created_time},
+                ${rant.num_comments},"${tags}",${rant.edited},
+                ${rant.rt},${rant.rc},${rant.user_id},
+                "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
+                "${rant.user_avatar.i}","false")`
+                , function (error, results, fields) {
+                    if (error) {
+                        console.log('insert rant error ' + error.message);
+                    }
+            });
+        } else {
+            db.query(
+                `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
+                VALUES (${rant.id},"${rant.text}",${rant.score},${rant.created_time},
+                "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
+                ${rant.num_comments},"${tags}",${rant.edited},
+                ${rant.rt},${rant.rc},${rant.user_id},
+                "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
+                "${rant.user_avatar.i}","true")`
+                , function (error, results, fields) {
+                    if (error) {
+                        console.log('insert rant error ' + error.message);
+                    }
+            });
         }
 
       
-         db.query(
-            `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-            VALUES (${rant.id},"${rant.text}",${rant.score},${rant.created_time},
-            "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
-            ${rant.num_comments},"${tags}",${rant.edited},
-            ${rant.rt},${rant.rc},${rant.user_id},
-            "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
-            "${rant.user_avatar.i}",${isImage})`
-            , function (error, results, fields) {
-                if (error) {
-                    console.log('insert rant error ' + error.message);
-                }
-        });
+        
     }
 }
