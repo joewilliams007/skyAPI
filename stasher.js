@@ -75,7 +75,7 @@ function insertRant(last_inserted_id, rant) {
       
          db.query(
             `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-            VALUES (${rant.id},"${rant.text}",${rant.created_time},
+            VALUES (${rant.id},"${rant.text}",${rant.score},${rant.created_time},
             "${rant.url}",${rant.width},${rant.height},
             ${rant.num_comments},"${tags}",${rant.edited},
             ${rant.rt},${rant.rc},${rant.user_id},
