@@ -4,7 +4,7 @@
 // statistics.. -> devRant doesn't publish stats anymore
 
 var getJSON = require('get-json')
-var db = require('./db');
+var db = require('./scripts/db');
 
 fetchRants()
 
