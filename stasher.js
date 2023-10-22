@@ -38,7 +38,7 @@ function stash(rants) {
                 })
 
             } else {
-                console.log(results);
+                console.log(results[0].RowDataPacket);
             }
     });
 
