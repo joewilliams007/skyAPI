@@ -91,3 +91,31 @@ FOREIGN KEY ( user_id )
     REFERENCES Users ( user_id )
     ON DELETE CASCADE
 ) ENGINE = INNODB; 
+
+CREATE TABLE Rants (
+id INT,
+text TEXT,
+score INT,
+created_time INT,
+url TEXT,
+width INT,
+height INT,
+num_comments INT,
+tags TEXT,
+edited BOOLEAN,
+rt INT,
+rc INT,
+user_id INT,
+user_username TEXT,
+user_score INT,
+b varchar(7),
+i TEXT,
+PRIMARY KEY ( id )
+);
+
+CREATE TABLE Tags (
+id INT,
+text TEXT,
+rant_id INT,
+PRIMARY KEY ( id )
+);
