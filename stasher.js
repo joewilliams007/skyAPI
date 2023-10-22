@@ -3,6 +3,9 @@
 // advanced search -> devRant API limited search
 // statistics.. -> devRant doesn't publish stats anymore
 
+var getJSON = require('get-json')
+var db = require('./db');
+
 fetchRants()
 
 function fetchRants() {
