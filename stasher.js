@@ -60,7 +60,7 @@ function insertRant(last_inserted_id, rant) {
         var tags = "";
         rant.tags.forEach(tag => {
             if (tag!=undefined) {
-                tags+=tag;
+                tags+=tag+",";
             }
         });
 
