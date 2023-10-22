@@ -58,7 +58,7 @@ function insertRant(last_inserted_id, rant) {
     if (rant.id > last_inserted_id) {
 
         var tags;
-        rant.tags.array.forEach(tag => {
+        rant.tags.forEach(tag => {
             tags+=tag;
         });
         var isImage = false;
