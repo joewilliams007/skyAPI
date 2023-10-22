@@ -32,6 +32,9 @@ function stash(rants) {
                 console.error('error ' + error.message);
 
             } else {
+                if (results[0].id==undefined) {
+                    results[0].id=0;
+                }
                 console.log(results[0].id);
 
                 if (rants[rants.length()-1]<results[0].id) {
