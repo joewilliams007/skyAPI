@@ -33,7 +33,7 @@ function stash(rants) {
 
             } else {
                 if (results[0]==undefined) {
-                    rants.array.forEach(element => {
+                    rants.forEach(element => {
                         insertRant(results[0].id, element)
                     });
                     console.log('insert rants complete');
@@ -43,7 +43,7 @@ function stash(rants) {
                     if (rants[rants.length()-1]<results[0].id) {
                         console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
                     } else {
-                        rants.array.forEach(element => {
+                        rants.forEach(element => {
                             insertRant(results[0].id, element)
                         });
                         console.log('insert rants complete');
