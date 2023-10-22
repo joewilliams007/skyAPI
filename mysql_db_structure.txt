@@ -110,6 +110,7 @@ user_username TEXT,
 user_score INT,
 b varchar(7),
 i TEXT,
+isImage BOOLEAN,
 PRIMARY KEY ( id )
 );
 

@@ -24,43 +24,53 @@ function fetchRants() {
 function stash(rants) {
 
     db.query(
-        `SELECT LAST_INSERT_ID()`
+        `SELECT id FROM Rants ORDER BY id DESC LIMIT 1;`
     
         , function (error, results, fields) {
             if (error) {
 
                 console.error('error ' + error.message);
 
-                res.status(200).json({
-                    success: false,
-                    error: true,
-                    message: error.message
-                })
-
             } else {
-                console.log(results[0].RowDataPacket);
+                console.log(results[0].id);
+
+                if (rants[rants.length()-1]<results[0].id) {
+                    console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
+                } else {
+                    rants.array.forEach(element => {
+                        insertRant(results[0].id, element)
+                    });
+                    console.log('insert rants complete');
+                }
             }
     });
 
-    /*rants.forEach(element => {
-            
-    });
-        db.query(
-            `INSERT INTO Users (user_id, username, avatar, color, timestamp) 
-            VALUES (${user_id},"${response.profile.username}","${response.profile.avatar_sm.i}","${response.profile.avatar_sm.b}",${timestamp})`
+}
+
+function insertRant(last_inserted_id, rant) {
+    if (rant.id > last_inserted_id) {
+
+        var tags;
+        rant.tags.array.forEach(tag => {
+            tags+=tag;
+        });
+        var isImage = false;
+        if (rant.url!=undefined) {
+            isImage = true;
+        }
+      
+         db.query(
+            `INSERT INTO Users (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
+            VALUES (${rant.id},"${rant.text}",${rant.created_time},
+            "${rant.url}",${rant.width},${rant.height},
+            ${rant.num_comments},"${tags}",${rant.edited},
+            ${rant.rt},${rant.rc},${rant.user_id},
+            "${rant.user_username}",${rant.user_score},"${rant.b}",
+            "${rant.i}",${isImage})`
             , function (error, results, fields) {
                 if (error) {
-                
-                    console.log('insert Auth error ' + error.message);
-    
-                    res.status(200).json({
-                        success: false,
-                        error: true,
-                        message: error.message
-                    })
-    
-                } else {
-                    createSession();
+                    console.log('insert rant error ' + error.message);
                 }
-        });*/
+        });
+    }
 }
