@@ -34,7 +34,7 @@ function stash(rants) {
             } else {
                 if (results[0]==undefined) {
                     rants.forEach(element => {
-                        insertRant(results[0].id, element)
+                        insertRant(0, element)
                     });
                     console.log('insert rants complete');
                 } else {
