@@ -62,7 +62,7 @@ function insertRant(last_inserted_id, rant) {
         if (rant.attached_image.url==undefined) {
               db.query(
                     `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-                    VALUES (${rant.id},'${rant.text}',${rant.score},${rant.created_time},
+                    VALUES (${rant.id},q'[${rant.text}]',${rant.score},${rant.created_time},
                     null,0,0,
                     ${rant.num_comments},"${tags}",${rant.edited},
                     ${rant.rt},${rant.rc},${rant.user_id},
@@ -76,7 +76,7 @@ function insertRant(last_inserted_id, rant) {
         } else {
             db.query(
                 `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-                VALUES (${rant.id},'${rant.text}',${rant.score},${rant.created_time},
+                VALUES (${rant.id},q'[${rant.text}]',${rant.score},${rant.created_time},
                 "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
                 ${rant.num_comments},"${tags}",${rant.edited},
                 ${rant.rt},${rant.rc},${rant.user_id},
