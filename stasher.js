@@ -59,7 +59,7 @@ function insertRant(last_inserted_id, rant) {
 
         var tags = rant.tags.toString();
 
-        if (rant.attached_image==undefined) {
+        if (rant.attached_image.url==undefined) {
               db.query(
                     `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
                     VALUES (${rant.id},"${rant.text}",${rant.score},${rant.created_time},
@@ -84,7 +84,7 @@ function insertRant(last_inserted_id, rant) {
                 "${rant.user_avatar.i}",1)`
                 , function (error, results, fields) {
                     if (error) {
-                        console.log('insert rant error ' + error.message);
+                        console.log('insert rant image error ' + error.message);
                     }
             });
         }
