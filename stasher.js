@@ -10,10 +10,10 @@ const nodeCron = require("node-cron");
 
 fetchRants()
 
-const job = nodeCron.schedule("30 20 * * * *", () => {
+const job = nodeCron.schedule("1 30 * * * *", () => {
     console.log(new Date().toLocaleString());
     fetchRants()
-});
+}); // every 30th min
 
 job.start()
 
