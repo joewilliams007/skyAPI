@@ -59,10 +59,13 @@ function insertRant(last_inserted_id, rant) {
 
         var tags = rant.tags.toString();
 
+         // Use the escape function to escape and insert the text
+        const escapedText = db.escape(rant.text);
+
         if (rant.attached_image.url==undefined) {
               db.query(
                     `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-                    VALUES (${rant.id},"uh",${rant.score},${rant.created_time},
+                    VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
                     null,0,0,
                     ${rant.num_comments},"${tags}",${rant.edited},
                     ${rant.rt},${rant.rc},${rant.user_id},
@@ -76,7 +79,7 @@ function insertRant(last_inserted_id, rant) {
         } else {
             db.query(
                 `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage) 
-                VALUES (${rant.id},"uh",${rant.score},${rant.created_time},
+                VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
                 "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
                 ${rant.num_comments},"${tags}",${rant.edited},
                 ${rant.rt},${rant.rc},${rant.user_id},
