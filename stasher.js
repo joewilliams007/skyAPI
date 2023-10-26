@@ -37,7 +37,7 @@ function fetchRants() {
     
     getJSON('https://devrant.com/api/devrant/rants?app=3&limit=50&sort=latest&range=day&skip=0/')
     .then(function (response) {
-
+        console.log('insert rants start');
         stash(response.rants);
 
         console.log('insert rants complete');
