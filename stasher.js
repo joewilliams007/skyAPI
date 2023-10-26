@@ -38,11 +38,7 @@ function fetchRants() {
     getJSON('https://devrant.com/api/devrant/rants?app=3&limit=50&sort=latest&range=day&skip=0/')
     .then(function (response) {
 
-        // stash(response.rants); -- id not ordered by dR?
-
-        response.rants.forEach(element => {
-            insertRant(0, element)
-        }); 
+        stash(response.rants);
 
         console.log('insert rants complete');
        
@@ -53,7 +49,16 @@ function fetchRants() {
 
 function stash(rants) {
 
-    db.query(
+   
+    rants.forEach(element => {
+        insertRant(0, element)
+    }); 
+
+    console.log('insert rants complete');
+       
+
+
+    /*db.query(
         `SELECT id FROM Rants ORDER BY id DESC LIMIT 1;`
     
         , function (error, results, fields) {
@@ -80,7 +85,7 @@ function stash(rants) {
                     }
                 }
             }
-    });
+    });*/
 
 }
 
