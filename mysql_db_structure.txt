@@ -113,10 +113,3 @@ i TEXT,
 isImage BOOLEAN,
 PRIMARY KEY ( id )
 );
-
-CREATE TABLE Tags (
-id INT,
-text TEXT,
-rant_id INT,
-PRIMARY KEY ( id )
-);

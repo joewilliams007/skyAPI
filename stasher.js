@@ -6,7 +6,31 @@
 var getJSON = require('get-json')
 var db = require('./scripts/db');
 
+
 fetchRants()
+
+function myTask() {
+    // Your task logic goes here
+    console.log("Task performed at: " + new Date());
+    fetchRants()
+  }
+  
+  
+function scheduleTask() {
+    myTask(); // Perform the task immediately
+
+    // Schedule the task to run every hour (3600000 milliseconds)
+    setInterval(myTask, 3600000);
+}
+
+// Start the scheduling
+scheduleTask();
+
+// Keep the script running indefinitely
+while (true) {
+// This loop is needed to keep the Node.js process running
+}
+
 
 function fetchRants() {
     console.log("fetching devRant feed")
@@ -91,8 +115,5 @@ function insertRant(last_inserted_id, rant) {
                     }
             });
         }
-
-      
-        
     }
 }
