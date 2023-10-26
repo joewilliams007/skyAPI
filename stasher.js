@@ -5,11 +5,17 @@
 
 var getJSON = require('get-json')
 var db = require('./scripts/db');
+const nodeCron = require("node-cron");
 
 
 fetchRants()
 
+const job = nodeCron.schedule("30 20 * * * *", () => {
+    console.log(new Date().toLocaleString());
+    fetchRants()
+});
 
+job.start()
 
 
 function fetchRants() {
@@ -88,7 +94,7 @@ function insertRant(last_inserted_id, rant) {
                     "${rant.user_avatar.i}",0)`
                     , function (error, results, fields) {
                         if (error) {
-                            console.log('insert rant error ' + error.message);
+                            // console.log('insert rant error ' + error.message);
                         }
                 });
         } else {
@@ -102,7 +108,7 @@ function insertRant(last_inserted_id, rant) {
                 "${rant.user_avatar.i}",1)`
                 , function (error, results, fields) {
                     if (error) {
-                        console.log('insert rant image error ' + error.message);
+                        // console.log('insert rant image error ' + error.message);
                     }
             });
         }
