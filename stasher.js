@@ -40,7 +40,7 @@ function fetchRants() {
 
         // stash(response.rants); -- id not ordered by dR?
 
-        rants.forEach(element => {
+        response.rants.forEach(element => {
             insertRant(0, element)
         }); 
 
