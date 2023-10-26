@@ -48,9 +48,9 @@ function checkRants(rants){
                     });
                     console.log('insert rants complete');
                 } else {
-                    console.log(results[0].id);
+                    console.log("newest "+rants[rants.length-1].id+" current: "+results[0].id);
 
-                    if (rants[rants.length-1]<results[0].id) {
+                    if (rants[rants.length-1].id<results[0].id) {
                         console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
                     } else {
                         console.log("there are new rants available, stashing ...")
