@@ -20,7 +20,7 @@ function scheduleTask() {
     myTask(); // Perform the task immediately
 
     // Schedule the task to run every hour (3600000 milliseconds)
-    setInterval(myTask, 3600000);
+    setInterval(myTask, 3600 * 1000);
 }
 
 // Start the scheduling
