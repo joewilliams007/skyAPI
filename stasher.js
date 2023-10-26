@@ -38,8 +38,14 @@ function fetchRants() {
     getJSON('https://devrant.com/api/devrant/rants?app=3&limit=50&sort=latest&range=day&skip=0/')
     .then(function (response) {
 
-        stash(response.rants);
+        // stash(response.rants); -- id not ordered by dR?
 
+        rants.forEach(element => {
+            insertRant(0, element)
+        }); 
+
+        console.log('insert rants complete');
+       
     }).catch(function (error) {
         console.log("fetching devRant error\n\n"+error);
     });
