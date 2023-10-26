@@ -17,19 +17,47 @@ const job = nodeCron.schedule("0 */30 * * * *", () => {
 
 job.start()
 
-
 function fetchRants() {
     console.log("fetching devRant feed")
     
     getJSON('https://devrant.com/api/devrant/rants?app=3&limit=50&sort=latest&range=day&skip=0/')
     .then(function (response) {
         console.log('insert rants start');
-        stash(response.rants);
+        checkRants(response.rants);
 
         console.log('insert rants complete');
        
     }).catch(function (error) {
         console.log("fetching devRant error\n\n"+error);
+    });
+}
+
+function checkRants(rants){
+    db.query(
+        `SELECT id FROM Rants ORDER BY id DESC LIMIT 1;`
+    
+        , function (error, results, fields) {
+            if (error) {
+
+                console.error('error ' + error.message);
+
+            } else {
+                if (results[0]==undefined) {
+                    rants.forEach(element => {
+                        insertRant(0, element)
+                    });
+                    console.log('insert rants complete');
+                } else {
+                    console.log(results[0].id);
+
+                    if (rants[rants.length-1]<results[0].id) {
+                        console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
+                    } else {
+                        console.log("there are new rants available, stashing ...")
+                        stash(rants)
+                    }
+                }
+            }
     });
 }
 
