@@ -51,7 +51,7 @@ function checkRants(rants){
                     console.log("newest "+rants[rants.length-1].id+" current: "+results[0].id);
 
                     if (rants[rants.length-1].id<results[0].id) {
-                        console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants.length()-1+")")
+                        console.log("last inserted id("+results[0].id+") is greater than newest rant id ("+rants[rants.length-1].id+")")
                     } else {
                         console.log("there are new rants available, stashing ...")
                         stash(rants)
