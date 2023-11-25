@@ -4,6 +4,8 @@ module.exports = (req, res) => {
 
     rant = req.body
 
+    var text = req.body.text;
+
     console.log(req.body)
 
     var db = require('./db');
@@ -22,10 +24,10 @@ module.exports = (req, res) => {
 
     function stashRant(rant) {
 
-        console.log(rant.text)
+        console.log(text)
 
         // Use the escape function to escape and insert the text
-        const escapedText = db.escape(rant.text.toString());
+        const escapedText = db.escape(text);
 
     
         if (rant.url == "") {
