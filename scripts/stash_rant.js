@@ -29,7 +29,7 @@ module.exports = (req, res) => {
 
         db.query(
             `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
-                        VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
+                        VALUES (${rant.rant_id},"${escapedText}",${rant.score},${rant.created_time},
                         null,0,0,
                         ${rant.num_comments},"${tags}",${rant.edited},
                         0,0,${rant.rant_user_id},
