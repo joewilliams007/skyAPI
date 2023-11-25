@@ -33,7 +33,7 @@ module.exports = (req, res) => {
                         VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
                         null,0,0,
                         ${rant.num_comments},"${tags}",${rant.edited},
-                        ${rant.rt},${rant.rc},${rant.user_id},
+                        ${rant.rt},${rant.rc},${rant.rant_user_id},
                         "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
                         "${rant.user_avatar.i}",0,1)`
                 , function (error, results, fields) {
@@ -54,7 +54,7 @@ module.exports = (req, res) => {
                     VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
                     "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
                     ${rant.num_comments},"${tags}",${rant.edited},
-                    ${rant.rt},${rant.rc},${rant.user_id},
+                    ${rant.rt},${rant.rc},${rant.rant_user_id},
                     "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
                     "${rant.user_avatar.i}",1,1)`
                 , function (error, results, fields) {
