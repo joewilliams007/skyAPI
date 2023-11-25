@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
     var text = req.body.text;
 
-    console.log(req.body)
+    // console.log(req.body)
 
     var db = require('./db');
     var authenticate = require('./authenticate');
@@ -24,7 +24,7 @@ module.exports = (req, res) => {
 
     function stashRant(rant) {
 
-        console.log(text)
+        // console.log(text)
 
         // Use the escape function to escape and insert the text
         const escapedText = db.escape(text);
