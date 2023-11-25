@@ -22,7 +22,6 @@ module.exports = (req, res) => {
 
     function stashRant(rant) {
 
-        var tags = rant.tags.toString();
 
         // Use the escape function to escape and insert the text
         const escapedText = db.escape(rant.text);
@@ -31,7 +30,7 @@ module.exports = (req, res) => {
             `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
                         VALUES (${rant.rant_id},"${escapedText}",${rant.score},${rant.created_time},
                         null,0,0,
-                        ${rant.num_comments},"${tags}",${rant.edited},
+                        ${rant.num_comments},"${rant.tags}",${rant.edited},
                         0,0,${rant.rant_user_id},
                         "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
                         "${rant.user_avatar.i}",0,1)`
