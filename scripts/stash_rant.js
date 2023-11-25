@@ -38,7 +38,7 @@ module.exports = (req, res) => {
                             ${req.body.num_comments},"${req.body.tags}",${req.body.edited},
                             0,0,${req.body.rant_user_id},
                             "${req.body.user_username}",${req.body.user_score},"${req.body.user_avatar.b}",
-                            "${req.body.user_avatar.i}",0,1)`
+                            "${req.body.i}",0,1)`
                 , function (error, results, fields) {
                     if (error) {
                         console.log('stash error ' + error.message);
@@ -58,8 +58,8 @@ module.exports = (req, res) => {
                             null,0,0,
                             ${req.body.num_comments},"${req.body.tags}",${req.body.edited},
                             0,0,${req.body.rant_user_id},
-                            "${req.body.user_username}",${req.body.user_score},"${req.body.user_avatar.b}",
-                            "${req.body.user_avatar.i}",1,1)`
+                            "${req.body.user_username}",${req.body.user_score},"${req.body.b}",
+                            "${req.body.i}",1,1)`
                 , function (error, results, fields) {
                     if (error) {
                         console.log('stash error ' + error.message);
