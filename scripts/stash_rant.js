@@ -53,9 +53,8 @@ module.exports = (req, res) => {
                 });
         } else {
             db.query(
-                `INSERT INTO Rants (url,id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
-                            VALUES ("${req.body.url}",${req.body.rant_id},"${escapedText}",${req.body.score},${req.body.created_time},
-                            null,0,0,
+                `INSERT INTO Rants (url,id,text,score,created_time,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
+                            VALUES ("${req.body.url}",${req.body.rant_id},"${escapedText}",${req.body.score},${req.body.created_time},0,0,
                             ${req.body.num_comments},"${req.body.tags}",${req.body.edited},
                             0,0,${req.body.rant_user_id},
                             "${req.body.user_username}",${req.body.user_score},"${req.body.b}",
