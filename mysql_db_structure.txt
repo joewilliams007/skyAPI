@@ -29,6 +29,7 @@ ALTER TABLE Users ADD avatar_frame_url VARCHAR(2000) DEFAULT "";
 ALTER TABLE Users ADD avatar_bg_hex VARCHAR(255) DEFAULT "";
 ALTER TABLE Users ADD avatar_bg_url VARCHAR(2000) DEFAULT "";
 ALTER TABLE Users ADD profile_bg_url VARCHAR(2000) DEFAULT "";
+ALTER TABLE Users ADD num_stashed_rants int DEFAULT 0;
 
 CREATE TABLE Auth (
 auth_id INT NOT NULL AUTO_INCREMENT,
@@ -113,3 +114,5 @@ i TEXT,
 isImage BOOLEAN,
 PRIMARY KEY ( id )
 );
+
+ALTER TABLE Rants ADD user_stashed BOOLEAN DEFAULT false;

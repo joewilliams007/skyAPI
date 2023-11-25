@@ -70,6 +70,9 @@ app.post("/set_custom", upload.array("file"), require("./scripts/set_custom.js")
 // Delete account
 app.post("/delete_account", upload.array("file"), require("./scripts/delete_account.js")); // Delete account (everything associated with foregin key user id will be deleted aswell)
 
+// Upload Rant for stashing
+app.post("/stash_rant", upload.array("file"), require("./scripts/stash_rant.js")); // stash a rant for if devRant goes down. methode for old rants opened through surprise rant
+
 process.on('uncaughtException', err => {
 	console.error(err && err.stack)
 });
