@@ -27,53 +27,30 @@ module.exports = (req, res) => {
         // Use the escape function to escape and insert the text
         const escapedText = db.escape(rant.text);
 
-        if (rant.attached_image.url == undefined) {
-            db.query(
-                `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
+        db.query(
+            `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
                         VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
                         null,0,0,
                         ${rant.num_comments},"${tags}",${rant.edited},
-                        ${rant.rt},${rant.rc},${rant.rant_user_id},
+                        0,0,${rant.rant_user_id},
                         "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
                         "${rant.user_avatar.i}",0,1)`
-                , function (error, results, fields) {
-                    if (error) {
-                        console.log('stash error ' + error.message);
-                        res.status(200).json({
-                            success: false,
-                            error: true,
-                            message: error.message
-                        })
-                    } else {
-                        update_user_num_stashed()
-                    }
-                });
-        } else {
-            db.query(
-                `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
-                    VALUES (${rant.id},"${escapedText}",${rant.score},${rant.created_time},
-                    "${rant.attached_image.url}",${rant.attached_image.width},${rant.attached_image.height},
-                    ${rant.num_comments},"${tags}",${rant.edited},
-                    ${rant.rt},${rant.rc},${rant.rant_user_id},
-                    "${rant.user_username}",${rant.user_score},"${rant.user_avatar.b}",
-                    "${rant.user_avatar.i}",1,1)`
-                , function (error, results, fields) {
-                    if (error) {
-                        console.log('stash error ' + error.message);
-                        res.status(200).json({
-                            success: false,
-                            error: true,
-                            message: error.message
-                        })
-                    } else {
-                        update_user_num_stashed()
-                    }
-                });
-        }
+            , function (error, results, fields) {
+                if (error) {
+                    console.log('stash error ' + error.message);
+                    res.status(200).json({
+                        success: false,
+                        error: true,
+                        message: error.message
+                    })
+                } else {
+                    update_user_num_stashed()
+                }
+            });
 
     }
 
-    function update_user_num_stashed(){
+    function update_user_num_stashed() {
 
         db.query(
             `UPDATE Users set
