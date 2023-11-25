@@ -24,7 +24,7 @@ module.exports = (req, res) => {
 
 
         // Use the escape function to escape and insert the text
-        const escapedText = db.escape(rant.text);
+        const escapedText = db.escape(rant.text.toString());
 
         db.query(
             `INSERT INTO Rants (id,text,score,created_time,url,width,height,num_comments,tags,edited,rt,rc,user_id,user_username,user_score,b,i,isImage,user_stashed) 
