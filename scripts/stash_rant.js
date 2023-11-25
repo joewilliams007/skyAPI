@@ -22,7 +22,7 @@ module.exports = (req, res) => {
 
     function stashRant(rant) {
 
-        console.log(rant.text.toString())
+        console.log(rant.text)
 
         // Use the escape function to escape and insert the text
         const escapedText = db.escape(rant.text.toString());
