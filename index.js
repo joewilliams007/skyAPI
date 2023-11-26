@@ -52,6 +52,9 @@ app.get("/react_post/:user_id/:session_id/:post_id/:reaction", reaction_limiter,
 // Get post extras
 app.get("/post/:post_id", require("./scripts/post.js")) // get post (Contains reactions)
 
+// Get rants
+app.get("/feed/:sort/:limit", require("./scripts/feed.js")) // get feed of stashed rants. (sort may be newest/random)
+
 // Get profile extras
 app.get("/profile/:user_id", require("./scripts/profile.js")) // without authentication
 app.get("/my_profile/:user_id/:session_id", require("./scripts/my_profile.js")) // with authentication profile details (such as following and blocking)

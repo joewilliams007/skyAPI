@@ -1,0 +1,56 @@
+module.exports = (req, res) => {
+    var { sort } = req.params;
+    var { limit } = req.params;
+
+    var db = require('./db');
+
+    console.log("feed " + sort + " request")
+
+    if (limit > 50) {
+        limit = 50;
+    }
+
+    var query;
+
+    switch (sort) {
+        case "random":
+            query = `SELECT * FROM Rants ORDER BY RAND()`
+            break;
+        case "random":
+            query = `SELECT * FROM Rants ORDER BY timestamp DESC`
+            break;
+        case "random":
+            query = `SELECT * FROM Rants ORDER BY score DESC`
+            break;
+        case "random":
+            query = `SELECT * FROM Rants WHERE score < 2 AND num_comments > 10`
+            break;
+        default:
+            query = `SELECT * FROM Rants ORDER BY RAND()`
+            break;
+    }
+
+    db.query(
+        query + " LIMIT " + limit
+
+        , function (error, results, fields) {
+            if (error) {
+
+                console.error('error ' + error.message);
+
+                res.status(200).json({
+                    success: false,
+                    error: true,
+                    message: error.message
+                })
+
+            } else {
+                res.status(200).json({
+                    success: true,
+                    error: false,
+                    message: "ok",
+                    rants: results
+                })
+            }
+        });
+}
