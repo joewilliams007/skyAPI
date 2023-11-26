@@ -49,15 +49,10 @@ module.exports = (req, res) => {
                     if (element.tags) {
                         element.tags = element.tags.split(',');
                     }
+                    element.edited === 1;
                 });
 
-                // Map the fetched data to convert integer values to Booleans
-                results = results.map(result => {
-                    return {
-                        id: result.id,
-                        edited: result.edited === 1 // Convert 1 to true, 0 to false
-                    };
-                });
+
 
 
 
