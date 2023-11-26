@@ -51,6 +51,15 @@ module.exports = (req, res) => {
                     }
                 });
 
+                // Map the fetched data to convert integer values to Booleans
+                results = results.map(result => {
+                    return {
+                        id: result.id,
+                        edited: result.edited === 1 // Convert 1 to true, 0 to false
+                    };
+                });
+
+
 
                 res.status(200).json({
                     success: true,
