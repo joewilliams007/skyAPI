@@ -46,7 +46,9 @@ module.exports = (req, res) => {
 
             } else {
 
-                results.tags = results.tags.split(',');
+                if (results.tags) {
+                    results.tags = results.tags.split(',');
+                }
                 res.status(200).json({
                     success: true,
                     error: false,
