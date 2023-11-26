@@ -23,7 +23,7 @@ module.exports = (req, res) => {
             query = `SELECT * FROM Rants ORDER BY score DESC`
             break;
         case "heated":
-            query = `SELECT *, TRIM(BOTH '\'' FROM text) AS text_trimmed  FROM Rants WHERE score < 2 AND num_comments > 6 ORDER BY RAND()`
+            query = `SELECT * FROM Rants WHERE score < 2 AND num_comments > 6 ORDER BY RAND()`
             break;
         default:
             query = `SELECT * FROM Rants ORDER BY RAND()`
