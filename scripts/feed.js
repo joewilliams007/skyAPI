@@ -49,10 +49,22 @@ module.exports = (req, res) => {
                     if (element.tags) {
                         element.tags = element.tags.split(',');
                     }
+
                     element.edited = !!element.edited === 1;
-                    element.user_avatar = null;
-                    element.user_avatar.b = element.b;
-                    element.user_avatar.i = element.i;
+
+                    if (element.b!=undefined) {
+                        element.user_avatar.b = element.b;
+                    } else {
+                        element.user_avatar.b = "";
+                    }
+                    
+                    if (element.b!=undefined) {
+                        element.user_avatar.i = element.i;
+                    } else {
+                        element.user_avatar.i = "";
+                    }
+                   
+            
                 });
 
 
