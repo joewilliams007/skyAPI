@@ -49,7 +49,7 @@ module.exports = (req, res) => {
                     if (element.tags) {
                         element.tags = element.tags.split(',');
                     }
-                    element.edited === 1;
+                    element.edited = element.edited === 1;
                 });
 
 
