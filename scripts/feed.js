@@ -23,7 +23,7 @@ module.exports = (req, res) => {
             query = `SELECT * FROM Rants ORDER BY score DESC`
             break;
         case "heated":
-            query = `SELECT * FROM Rants WHERE score < 2 AND num_comments > 10`
+            query = `SELECT * FROM Rants WHERE score < 2 AND num_comments > 6`
             break;
         default:
             query = `SELECT * FROM Rants ORDER BY RAND()`
