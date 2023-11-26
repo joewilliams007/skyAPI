@@ -50,7 +50,7 @@ module.exports = (req, res) => {
                         element.tags = element.tags.split(',');
                     }
                     element.edited = !!element.edited === 1;
-
+                    element.user_avatar = null;
                     element.user_avatar.b = element.b;
                     element.user_avatar.i = element.i;
                 });
