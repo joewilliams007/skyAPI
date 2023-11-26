@@ -17,7 +17,7 @@ module.exports = (req, res) => {
             query = `SELECT * FROM Rants ORDER BY RAND()`
             break;
         case "recent":
-            query = `SELECT * FROM Rants ORDER BY timestamp DESC`
+            query = `SELECT * FROM Rants ORDER BY created_time DESC`
             break;
         case "top":
             query = `SELECT * FROM Rants ORDER BY score DESC`
