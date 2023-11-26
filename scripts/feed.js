@@ -56,6 +56,7 @@ module.exports = (req, res) => {
                     }
                     element.user_avatar.b = element.b;
                     element.user_avatar.i = element.i;
+                    element.text = element.text.slice(1, -1);
                 });
 
 
