@@ -45,10 +45,13 @@ module.exports = (req, res) => {
                 })
 
             } else {
+                results.forEach(element => {
+                    if (element.tags) {
+                        element.tags = element.tags.split(',');
+                    }
+                });
 
-                if (results.tags) {
-                    results.tags = results.tags.split(',');
-                }
+
                 res.status(200).json({
                     success: true,
                     error: false,
