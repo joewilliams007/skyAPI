@@ -51,7 +51,7 @@ module.exports = (req, res) => {
                     }
                     element.edited = !!element.edited === 1;
                     element.user_avatar = {}
-                    if (element.b==undefined) {
+                    if (element.b==null) {
                         element.b="7bc8a4"
                     }
                     element.user_avatar.b = element.b;
