@@ -16,13 +16,13 @@ module.exports = (req, res) => {
         case "random":
             query = `SELECT * FROM Rants ORDER BY RAND()`
             break;
-        case "random":
+        case "recent":
             query = `SELECT * FROM Rants ORDER BY timestamp DESC`
             break;
-        case "random":
+        case "top":
             query = `SELECT * FROM Rants ORDER BY score DESC`
             break;
-        case "random":
+        case "heated":
             query = `SELECT * FROM Rants WHERE score < 2 AND num_comments > 10`
             break;
         default:

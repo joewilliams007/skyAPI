@@ -20,7 +20,7 @@ const limiter = rateLimit({
 
 const reaction_limiter = rateLimit({
 	windowMs: 1 * 60 * 1000, // 1 minutes
-	max: 20, // Limit each IP to 100 requests per `window` (here, per 20 minutes)
+	max: 20, // Limit each IP to 100 requests per `window` (here, per 20 minutes
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 })
@@ -43,8 +43,8 @@ app.listen(port, () => console.log("Server startet at port ", port));
 // GET REQUEST
 
 // Verifying proccess
-app.get("/verify_key/:user_id/:session_id",verify_limiter, require("./scripts/verify.js")) // Verify user id (generated key) [client should comment key under verify post and then call verify_comment request]
-app.get("/verify_comment/:user_id/:session_id",verify_limiter, require("./scripts/verify_comment.js")) // Verify comment containing verify_key (will verify session id)[after client commented key under verify_post]
+app.get("/verify_key/:user_id/:session_id", verify_limiter, require("./scripts/verify.js")) // Verify user id (generated key) [client should comment key under verify post and then call verify_comment request]
+app.get("/verify_comment/:user_id/:session_id", verify_limiter, require("./scripts/verify_comment.js")) // Verify comment containing verify_key (will verify session id)[after client commented key under verify_post]
 
 // Reaction
 app.get("/react_post/:user_id/:session_id/:post_id/:reaction", reaction_limiter, require("./scripts/react.js")) // react to post (Emojis only) [will delete prior set recation]
